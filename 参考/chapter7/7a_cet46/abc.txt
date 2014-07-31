@@ -1,0 +1,25 @@
+function getCET46Info($name, $number)
+{
+	$name_gb2312 = urlencode(mb_convert_encoding($name, 'gb2312', 'utf-8'));
+	$data = "id=".$number."&name=".$name_gb2312;
+
+	$url = "http://cet.99sushe.com/searchscore";
+	$headers = array(
+	"User-Agent: Mozilla/5.0 (Windows NT 5.1; rv:14.0) Gecko/20100101 Firefox/14.0.1",
+	"Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+	"Accept-Language: en-us,en;q=0.5",
+	"Referer: http://cet.99sushe.com/"
+	);
+	$curl = curl_init();
+	curl_setopt($curl, CURLOPT_URL, $url);
+	curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+	curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+	curl_setopt($curl, CURLOPT_POST, 1);
+	curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+	$output = curl_exec($curl);
+	curl_close($curl);
+
+	$result = iconv("GBK", "UTF-8//IGNORE", $output);
+	$score = explode(",",$result);
+	return $score;
+}

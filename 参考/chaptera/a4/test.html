@@ -1,0 +1,30 @@
+1 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+    <HEAD>
+        <TITLE>方倍工作室</TITLE>
+        <META charset=utf-8>
+        <META name=viewport content="width=device-width, user-scalable=no, initial-scale=1">
+    </HEAD>
+    <BODY>
+         <script type="text/javascript">
+            netType = {"network_type:wifi": "wifi网络",
+                        "network_type:edge": "非wifi,包含3G/2G",
+                        "network_type:fail": "网络断开连接",
+                        "network_type:wwan": "2g或者3g"
+            };
+            document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+                WeixinJSBridge.call('hideOptionMenu');
+            });
+            document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+                WeixinJSBridge.call('hideToolbar');
+            }); 
+            document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+                 WeixinJSBridge.invoke('getNetworkType',{},
+                    function(e){
+                        WeixinJSBridge.log(e.err_msg);
+                        alert(netType[e.err_msg])
+                });
+            }); 
+        </script>
+    </BODY>
+</HTML>
