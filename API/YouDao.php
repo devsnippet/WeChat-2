@@ -6,7 +6,7 @@
 		}
 		$apihost="http://fanyi.youdao.com/";
 		$apimethod="openapi.do?";
-		$apiparams=array('keyform'=>"txw1958",'key'=>"aaaaa",'type'=>"data",'doctype'=>"json",'version'=>"1.1",'q'=>$keyword);
+		$apiparams=array('keyform'=>"rs1990 ",'key'=>"923522816",'type'=>"data",'doctype'=>"json",'version'=>"1.1",'q'=>$keyword);
 		
 		$apicalurl=$apihost.$apimethod.http_build_query($apiparams);
 		
